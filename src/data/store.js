@@ -1,7 +1,9 @@
 import {createStore, combineReducers} from 'redux';
 import {DATA_LOADED} from "../constantes";
+import moockPosts from "./moocks";
 
-const allPosts = (posts=[], accion) =>{
+const allPosts = (posts = moockPosts, accion) =>{
+    console.log(posts)
     let newPosts = posts.slice();
     switch (accion.type) {
         case DATA_LOADED:            
