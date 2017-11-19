@@ -1,9 +1,18 @@
 import React from 'react';
+import SignupForm from '../forms/SignupForm';
 
+const Signup = (props) => {
 
-const Signup = () => {
+  const submit = (datos) => {
+    console.log(datos);
+    return false;
+  }
+
   return (
-    <div>Signup</div>
+    <div>
+      <h2>Signup</h2>
+      <SignupForm onSubmit={submit}/>
+    </div>
   );
 };
 

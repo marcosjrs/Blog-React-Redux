@@ -1,4 +1,5 @@
 import {createStore, combineReducers} from 'redux';
+import {reducer as formReducer} from 'redux-form';
 import {DATA_LOADED,DATA_CLEARED} from "../constantes";
 
 const allPosts = (posts = [], accion) =>{
@@ -14,7 +15,7 @@ const allPosts = (posts = [], accion) =>{
     }
 }
 
-const reducers = combineReducers({ allPosts });
+const reducers = combineReducers({ allPosts, form:formReducer });
 
 const store = createStore(reducers);
 
