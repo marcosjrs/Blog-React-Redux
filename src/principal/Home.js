@@ -1,17 +1,23 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 
-const Home = (props) => {
+class Home extends Component {
+  constructor(props) {
+    super(props);    
+  } 
 
-  const htmlPosts = props.allPosts.map((item,index)=>{
-    return <div key={item.index}><h3>{item.title}</h3>{item.body}</div>
-  }); 
+  render() {
+    
+    const htmlPosts = this.props.allPosts.map((item,index)=>{
+      return <div key={item.index}><h3>{item.title}</h3>{item.body}</div>
+    }); 
 
-  return (
-    <div>{htmlPosts}</div>
-  );
-};
+    return (
+      <div>{htmlPosts}</div>
+    );
+  }
+}
 
 const mapStateToProps= (store) => {
   return {
