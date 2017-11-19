@@ -1,18 +1,21 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {DATA_LOADED} from "../constantes";
+import axios from 'axios';
 
 
 class Home extends Component {
-  constructor(props) {
-    super(props);    
-  } 
-
+  
+  getAllPosts() {
+    this.props.dispatch1();
+  }
+  componentDidMount() {
+    this.getAllPosts();    
+  }
   render() {
-    
     const htmlPosts = this.props.allPosts.map((item,index)=>{
-      return <div key={item.index}><h3>{item.title}</h3>{item.body}</div>
+      return <div key={item.id}><h3>{item.title}</h3>{item.body}</div>
     }); 
-
     return (
       <div>{htmlPosts}</div>
     );
@@ -28,7 +31,14 @@ const mapStateToProps= (store) => {
 const mapDispatchToProps = (dispatch) =>{
   return{
     dispatch1: ()=>{
-       // dispatch(funcionQueDevuelveUnObjetoAcccion)
+       axios.get("https://blog-api-u.herokuapp.com/v1/posts")
+       .then((response)=>{
+         dispatch({
+          type:DATA_LOADED,
+          posts:response.data
+         });
+       })
+       .catch((response)=>console.log(response));
     }
   }
 }
