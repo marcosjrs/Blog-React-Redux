@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {DATA_LOADED} from "../constantes";
+import {dataLoaded} from "../acciones";
 import axios from 'axios';
 
 
@@ -33,10 +33,7 @@ const mapDispatchToProps = (dispatch) =>{
     dispatch1: ()=>{
        axios.get("https://blog-api-u.herokuapp.com/v1/posts")
        .then((response)=>{
-         dispatch({
-          type:DATA_LOADED,
-          posts:response.data
-         });
+         dispatch(dataLoaded(response.data));
        })
        .catch((response)=>console.log(response));
     }
