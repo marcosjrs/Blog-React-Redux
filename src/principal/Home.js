@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {dataLoaded} from "../acciones";
+import {dataLoaded, dataCleared} from "../acciones";
 import axios from 'axios';
 
 
@@ -12,6 +12,10 @@ class Home extends Component {
   componentDidMount() {
     this.getAllPosts();    
   }
+  componentWillUnmount() {
+    this.props.clearPosts(); // para limpiar la lista antes de cambiarse a otro route...
+  }
+  
   render() {
     const htmlPosts = this.props.allPosts.map((item,index)=>{
       return <div key={item.id}><h3>{item.title}</h3>{item.body}</div>
@@ -36,7 +40,10 @@ const mapDispatchToProps = (dispatch) =>{
          dispatch(dataLoaded(response.data));
        })
        .catch((response)=>console.log(response));
-    }
+    },
+    clearPosts: ()=>{
+      dispatch(dataCleared());
+   }
   }
 }
 
