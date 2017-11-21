@@ -13,7 +13,17 @@ const validate = values => {
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = 'Formato de email incorrecto';
   }
-
+  if (!values.password) {
+    errors.password = 'Campo Obligatorio';
+  }else if (values.password.length < 6 ) {
+    errors.password = 'Mínimo 6 letras';
+  }
+  if (!values.repeat_password) {
+    errors.repeat_password = 'Campo Obligatorio';
+  }
+  if(values.password !== values.repeat_password){
+    errors.repeat_password = 'No se ha repetido correctamente';
+  }
   return errors;
 };
 
@@ -53,6 +63,8 @@ const SyncValidationSignupForm = props => {
         label="Nombre"
       />
       <Field name="email" type="email" component={renderField} label="Email" />
+      <Field name="password" type="password" component={renderField} label="Contraseña" />
+      <Field name="repeat_password" type="password" component={renderField} label="Repetir contraseña" />
       <div>
         <button type="submit" disabled={submitting}>
           Enviar
