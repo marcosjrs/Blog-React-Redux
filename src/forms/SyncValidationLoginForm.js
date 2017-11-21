@@ -40,7 +40,7 @@ const SyncValidationLoginForm = props => {
       <Field name="password" type="password" component={renderField} label="Contraseña" />
       <div>
         <button type="submit" disabled={submitting}>
-          Enviar
+          Logar
         </button>
         <button type="button" disabled={pristine || submitting} onClick={reset}>
           Limpiar

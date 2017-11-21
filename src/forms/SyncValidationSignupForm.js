@@ -67,7 +67,7 @@ const SyncValidationSignupForm = props => {
       <Field name="repeat_password" type="password" component={renderField} label="Repetir contraseña" />
       <div>
         <button type="submit" disabled={submitting}>
-          Enviar
+          Registrar
         </button>
         <button type="button" disabled={pristine || submitting} onClick={reset}>
           Limpiar

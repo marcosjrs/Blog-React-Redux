@@ -7,7 +7,7 @@ const Login = () => {
     console.log(datos);
   };
   return (
-    <div>
+    <div className="container-form">
       <SyncValidationLoginForm onSubmit={sendData}/>
     </div>
   );

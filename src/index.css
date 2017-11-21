@@ -4,6 +4,9 @@ body {
   font-family: sans-serif;
 }
 
-#root > nav > a{
+#root > div > nav > a{
   margin-right: 5px;
+}
+#root > div > nav + .container-form{
+  margin-top: 60px;
 }
