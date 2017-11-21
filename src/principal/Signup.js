@@ -1,5 +1,5 @@
 import React from 'react';
-import SignupForm from '../forms/SignupForm';
+import SyncValidationSignupForm from '../forms/SyncValidationSignupForm';
 
 const Signup = (props) => {
 
@@ -11,7 +11,7 @@ const Signup = (props) => {
   return (
     <div>
       <h2>Signup</h2>
-      <SignupForm onSubmit={submit}/>
+      <SyncValidationSignupForm onSubmit={submit}/>
     </div>
   );
 };
