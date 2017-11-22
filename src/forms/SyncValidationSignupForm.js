@@ -53,7 +53,7 @@ const renderField = ({
 )
 
 const SyncValidationSignupForm = props => {
-  const { handleSubmit, pristine, reset, submitting } = props
+  const { handleSubmit, pristine, reset, submitting,msgBackEnd } = props
   return (
     <form onSubmit={handleSubmit}>
       <Field
@@ -65,6 +65,7 @@ const SyncValidationSignupForm = props => {
       <Field name="email" type="email" component={renderField} label="Email" />
       <Field name="password" type="password" component={renderField} label="Contraseña" />
       <Field name="repeat_password" type="password" component={renderField} label="Repetir contraseña" />
+      <div className="container-msg"><span>{msgBackEnd}</span></div>
       <div>
         <button type="submit" disabled={submitting}>
           Registrar

@@ -1,6 +1,6 @@
 import {createStore, combineReducers} from 'redux';
 import {reducer as formReducer} from 'redux-form';
-import {DATA_LOADED,DATA_CLEARED} from "../constantes";
+import {DATA_LOADED,DATA_CLEARED, USER_CREATED, USER_ERROR} from "../constantes";
 
 const allPosts = (posts = [], accion) =>{
     let newPosts = posts.slice();
@@ -15,7 +15,19 @@ const allPosts = (posts = [], accion) =>{
     }
 }
 
-const reducers = combineReducers({ allPosts, form:formReducer });
+
+
+const mensaje = (state="", accion)=>{
+    switch (accion.type) {
+        case USER_CREATED: 
+            return accion.mensaje+"";
+        case USER_ERROR:
+            return accion.mensaje+"";    
+        default:
+            return state;
+    }
+}
+const reducers = combineReducers({ allPosts, form:formReducer, mensaje });
 
 const store = createStore(reducers);
 

@@ -10,3 +10,9 @@ body {
 #root > div > nav + .container-form{
   margin-top: 60px;
 }
+
+div.container-msg>span {
+  border: none;
+  font-weight: 700;
+  font-size: 16px;
+}
