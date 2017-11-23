@@ -1,6 +1,6 @@
 import {createStore, combineReducers} from 'redux';
 import {reducer as formReducer} from 'redux-form';
-import {DATA_LOADED,DATA_CLEARED, USER_CREATED, USER_ERROR} from "../constantes";
+import {DATA_LOADED,DATA_CLEARED, USER_CREATED, USER_ERROR, USER_LOGGED} from "../constantes";
 
 const allPosts = (posts = [], accion) =>{
     let newPosts = posts.slice();
@@ -22,6 +22,8 @@ const mensaje = (state="", accion)=>{
         case USER_CREATED: 
             return accion.mensaje+"";
         case USER_ERROR:
+            return accion.mensaje+"";
+        case USER_LOGGED:
             return accion.mensaje+"";    
         default:
             return state;
