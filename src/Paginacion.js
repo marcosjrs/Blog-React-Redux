@@ -33,11 +33,11 @@ class Paginacion extends Component {
 
         for(var n=primerNumDePaginaActual;n<=ultimoNumDePaginaActual;n++){
             listaLi.push(
-            <button id={n} key={n} disabled={this.props.paginacion.paginaActual===n} onClick={(e)=>{ this.props.setPaginaActual(e.target.id)}} >{n}</button>
+            <li key={"li"+n} className={this.props.paginacion.paginaActual===n?'active':''}><a id={n} key={n} onClick={(e)=>{ this.props.setPaginaActual(e.target.id)}}>{n}</a></li>
             );
         }
         
-        return ( <div className="paginacion">{listaLi}</div> );
+        return ( <ul className="pagination">{listaLi}</ul> );
 
     };
     componentDidMount() {
