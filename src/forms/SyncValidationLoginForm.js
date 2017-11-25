@@ -41,7 +41,7 @@ const SyncValidationLoginForm = props => {
       <div className="container-msg"><span>{msgBackEnd}</span></div>
       <div>
         <button type="submit" disabled={submitting}>
-          Logar
+          Entrar
         </button>
         <button type="button" disabled={pristine || submitting} onClick={reset}>
           Limpiar
