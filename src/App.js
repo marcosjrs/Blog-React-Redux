@@ -10,17 +10,29 @@ import { connect } from 'react-redux';
 
 
 const App = (props) => {
-  const Header = props.userData && props.userData.jwt? <HeaderUserAutenticado />:<HeaderUserNoAutenticado />;
-  return (
-    <Router>
-      <div>
-      {Header}
-      <Route exact path="/" component={Home}/>
-      <Route path="/signup" component={Signup}/>
-      <Route path="/login" component={Login}/>
-      </div>
-    </Router>
-  );
+  const autenticado = props.userData && props.userData.jwt;
+  if(autenticado){
+    return (
+      <Router>
+        <div>
+        <HeaderUserAutenticado />
+        <Route exact path="/" component={Home}/>
+        <Route path="/signup" component={Signup}/>
+        <Route path="/login" component={Login}/>
+        </div>
+      </Router>
+    );
+  }else{
+    return (
+      <Router>
+        <div>
+        <HeaderUserNoAutenticado />
+        <Route path="/" component={Login}/>
+        </div>
+      </Router>
+    );
+  }
+ 
 };
 
 const mapStateToProps = (state)=>{
