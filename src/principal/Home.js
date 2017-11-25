@@ -8,7 +8,7 @@ import Paginacion from "../Paginacion";
 class Home extends Component {
   
   getAllPosts() {
-    this.props.dispatch1();
+    this.props.getPosts(this.props.paginacion.paginaActual);
   }
   componentDidMount() {
     this.getAllPosts();    
@@ -16,6 +16,12 @@ class Home extends Component {
   componentWillUnmount() {
     this.props.clearPosts(); // para limpiar la lista antes de cambiarse a otro route...
   }
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.paginacion.paginaActual != this.props.paginacion.paginaActual){
+      this.props.getPosts(this.props.paginacion.paginaActual);
+    }
+  }
+  
   
   render() {
     const htmlPosts = this.props.allPosts.map((item,index)=>{
@@ -30,16 +36,17 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps= (store) => {
+const mapStateToProps= (state) => {
   return {
-    allPosts : store.allPosts
+    allPosts : state.allPosts,
+    paginacion: state.paginacion
   }  
 };
 
 const mapDispatchToProps = (dispatch) =>{
   return{
-    dispatch1: ()=>{
-       axios.get("https://blog-api-u.herokuapp.com/v1/posts")
+    getPosts: (pagina)=>{
+       axios.get("https://blog-api-u.herokuapp.com/v1/posts?page="+pagina)
        .then((response)=>{
          dispatch(dataLoaded(response.data));
        })
