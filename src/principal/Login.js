@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
-import {userLogged, userError} from '../acciones';
+import {userError, userLogin} from '../acciones';
 import SyncValidationLoginForm from '../forms/SyncValidationLoginForm';
 
 
@@ -10,15 +10,14 @@ const Login = (props) => {
     axios.post('https://blog-api-u.herokuapp.com/v1/login',{
       login:{
         email:datos.email,
-        password: datos.password
-      }
+        password: datos.password 
+      }//email@email.com  | contraseña
     })
     .then(function(resOK){
-      //var jwt = resOK.data.jwt;
-      props.logged("¡Logado correctamente!");
+      props.login(resOK.data);
     })
     .catch(function(data){
-      props.userError(data.response.data.error);
+      //props.userError(data.response.data.error);
     });
   };
   return (
@@ -30,14 +29,15 @@ const Login = (props) => {
 
 const mapStateToProps = (state)=>{
   return ({
-    mensaje:state.mensaje
+    mensaje:state.mensaje,
+    userData:state.userData
   });
 };
 
 const mapDispatchToProps = (dispatch)=>{
   return ({
-    logged:(mensaje)=>{
-      dispatch(userLogged(mensaje));
+    login:(userData)=>{
+      dispatch(userLogin(userData));
     },
     userError:(mensaje)=>{
       dispatch(userError(mensaje));

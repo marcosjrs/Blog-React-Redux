@@ -1,26 +1,20 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 import Home from './principal/Home';
 import Login from './principal/Login';
 import Signup from './principal/Signup';
-
-const Header = () => {
-  return (
-    <nav>
-      <Link to="/">Home</Link>
-      <Link to="/signup">Sign Up</Link>
-      <Link to="/login">Login</Link>
-    </nav>
-  );
-};
+import HeaderUserAutenticado from './cabeceras/HeaderUserAutenticado';
+import HeaderUserNoAutenticado from './cabeceras/HeaderUserNoAutenticado';
+import { connect } from 'react-redux';
 
 
-const App = () => {
+const App = (props) => {
+  const Header = props.userData && props.userData.jwt? <HeaderUserAutenticado />:<HeaderUserNoAutenticado />;
   return (
     <Router>
       <div>
-      <Header />
+      {Header}
       <Route exact path="/" component={Home}/>
       <Route path="/signup" component={Signup}/>
       <Route path="/login" component={Login}/>
@@ -29,4 +23,16 @@ const App = () => {
   );
 };
 
-export default App;
+const mapStateToProps = (state)=>{
+  return ({
+    userData:state.userData
+  });
+}
+
+const mapDispatchToProps = (dispath)=>{
+  return ({
+
+  });
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
