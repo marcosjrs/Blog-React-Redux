@@ -1,6 +1,6 @@
 import {createStore, combineReducers} from 'redux';
 import {reducer as formReducer} from 'redux-form';
-import {DATA_LOADED,DATA_CLEARED, USER_CREATED, USER_ERROR, USER_LOGGED} from "../constantes";
+import {DATA_LOADED,DATA_CLEARED, USER_CREATED, USER_ERROR, USER_LOGGED, PAGINA_ACTUAL, POST_TOTALES} from "../constantes";
 
 const allPosts = (posts = [], accion) =>{
     let newPosts = posts.slice();
@@ -29,7 +29,22 @@ const mensaje = (state="", accion)=>{
             return state;
     }
 }
-const reducers = combineReducers({ allPosts, form:formReducer, mensaje });
+
+const paginacion = (state= {paginaActual:1,postTotales:1}, accion)=>{
+    var nuevoState = Object.assign({},state);
+    switch (accion.type) {
+        case PAGINA_ACTUAL:
+            nuevoState.paginaActual =  parseInt(accion.paginaActual,0);
+            return nuevoState;    
+        case POST_TOTALES:
+            nuevoState.postTotales =  parseInt(accion.postTotales,0);
+            return nuevoState;    
+        default:
+            return state;
+    }
+}
+
+const reducers = combineReducers({ allPosts, form:formReducer, mensaje , paginacion });
 
 const store = createStore(reducers);
 

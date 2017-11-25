@@ -16,3 +16,17 @@ div.container-msg>span {
   font-weight: 700;
   font-size: 16px;
 }
+
+.paginacion{
+  margin-top: 50px;
+}
+.paginacion button{
+  cursor: pointer;
+  background-color: white;
+  border-style: dashed;
+  margin-right: 3px;
+  font-weight: bold;
+}
+.paginacion button[disabled]{
+  cursor: default;
+}

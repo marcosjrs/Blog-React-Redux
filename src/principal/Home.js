@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {dataLoaded, dataCleared} from "../acciones";
 import axios from 'axios';
+import {dataLoaded, dataCleared} from "../acciones";
+import Paginacion from "../Paginacion";
 
 
 class Home extends Component {
@@ -21,7 +22,10 @@ class Home extends Component {
       return <div key={item.id}><h3>{item.title}</h3>{item.body}</div>
     }); 
     return (
-      <div>{htmlPosts}</div>
+      <div>
+        {htmlPosts}
+        <Paginacion />
+      </div>
     );
   }
 }
