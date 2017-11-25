@@ -35,7 +35,7 @@ const userData = (state=null, accion)=>{
         case USER_LOGIN:
             return accion.userData;
         case USER_LOGOUT:
-            return state;    
+            return null;    
         default:
             return state;
     }

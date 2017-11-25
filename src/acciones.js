@@ -1,4 +1,4 @@
-import {DATA_LOADED, DATA_CLEARED, USER_CREATED, USER_ERROR, USER_LOGGED, USER_LOGOUT, POST_TOTALES, PAGINA_ACTUAL, USER_LOGIN} from "./constantes";
+import {DATA_LOADED, DATA_CLEARED, USER_CREATED, USER_ERROR, USER_LOGOUT, POST_TOTALES, PAGINA_ACTUAL, USER_LOGIN} from "./constantes";
 
 export const dataLoaded = (posts) => { 
     return {type:DATA_LOADED, posts };
@@ -20,12 +20,8 @@ export const userError = (mensaje) => {
     return {type:USER_ERROR, mensaje };
 };
 
-export const userLogged = (mensaje) => { 
-    return {type:USER_LOGGED, mensaje };
-};
-
-export const userLogout = (mensaje) => { 
-    return {type:USER_LOGOUT, mensaje };
+export const userLogout = () => { 
+    return {type:USER_LOGOUT};
 };
 
 export const postTotales = (postTotales) =>{
