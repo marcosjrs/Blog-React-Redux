@@ -7,7 +7,7 @@ const HeaderUserAutenticado = (props) => {
     return (
         <nav>
             <Link to="/">Home</Link>
-            <Link to="/signup">Sign Up</Link>
+            <Link to={`${props.userData.id}/posts`}>Mis Posts</Link>
             <Link to="/login" onClick={props.logout}>logout</Link>
         </nav>
     );
