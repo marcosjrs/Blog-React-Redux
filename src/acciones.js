@@ -1,4 +1,4 @@
-import {DATA_LOADED, DATA_CLEARED, USER_CREATED, USER_ERROR, USER_LOGOUT, POST_TOTALES, PAGINA_ACTUAL, USER_LOGIN} from "./constantes";
+import {DATA_LOADED, DATA_CLEARED, USER_CREATED, USER_ERROR, USER_LOGOUT, POST_TOTALES, PAGINA_ACTUAL, USER_LOGIN, DATA_POST_ACTUAL, ERROR_DATA_POST_ACTUAL, CLEAR_DATA_POST_ACTUAL} from "./constantes";
 
 export const dataLoaded = (posts) => { 
     return {type:DATA_LOADED, posts };
@@ -30,4 +30,15 @@ export const postTotales = (postTotales) =>{
 
 export const paginaActual = (paginaActual)=>{
     return {type:PAGINA_ACTUAL, paginaActual};
+}
+
+export const dataPostActual = (data)=>{
+    return {type: DATA_POST_ACTUAL, data};
+}
+
+export const clearDataPostActual = ()=>{
+    return {type: CLEAR_DATA_POST_ACTUAL};
+}
+export const errorDataPostActual = ()=>{
+    return {type: ERROR_DATA_POST_ACTUAL};
 }

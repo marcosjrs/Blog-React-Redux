@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 import {dataLoaded, dataCleared} from "../acciones";
 import Paginacion from "../Paginacion";
@@ -17,19 +18,24 @@ class Home extends Component {
     this.props.clearPosts(); // para limpiar la lista antes de cambiarse a otro route...
   }
   componentWillReceiveProps(nextProps) {
-    if(nextProps.paginacion.paginaActual != this.props.paginacion.paginaActual){
+    if(nextProps.paginacion.paginaActual !== this.props.paginacion.paginaActual){
       this.props.getPosts(this.props.paginacion.paginaActual);
     }
   }
   
+  getHtmlAllPosts= ()=>{
+    const htmlPosts = this.props.allPosts.map((item,index)=>{
+      const post = <Link to={`/post/${item.id}`} key={"l_"+item.id}><h3>{item.title}</h3></Link>
+      return post;
+    }); 
+    return htmlPosts;
+  }
   
   render() {
-    const htmlPosts = this.props.allPosts.map((item,index)=>{
-      return <div key={item.id}><h3>{item.title}</h3>{item.body}</div>
-    }); 
+    
     return (
       <div>
-        {htmlPosts}
+        {this.getHtmlAllPosts()}
         <Paginacion />
       </div>
     );

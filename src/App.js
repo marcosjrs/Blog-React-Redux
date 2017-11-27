@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Home from './principal/Home';
 import Login from './principal/Login';
 import Signup from './principal/Signup';
+import Post from './principal/Post';
 import HeaderUserAutenticado from './cabeceras/HeaderUserAutenticado';
 import HeaderUserNoAutenticado from './cabeceras/HeaderUserNoAutenticado';
 import { connect } from 'react-redux';
@@ -19,6 +20,7 @@ const App = (props) => {
         <Route exact path="/" component={Home}/>
         <Route path="/signup" component={Signup}/>
         <Route path="/login" component={Login}/>
+        <Route path="/post/:id" component={Post}/>
         </div>
       </Router>
     );
