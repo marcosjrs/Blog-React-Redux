@@ -6,6 +6,7 @@ import Login from './principal/Login';
 import Signup from './principal/Signup';
 import Post from './principal/Post';
 import MisPosts from './principal/MisPosts';
+import CrearPost from './principal/CrearPost';
 import HeaderUserAutenticado from './cabeceras/HeaderUserAutenticado';
 import HeaderUserNoAutenticado from './cabeceras/HeaderUserNoAutenticado';
 import { connect } from 'react-redux';
@@ -20,10 +21,9 @@ const App = (props) => {
         <HeaderUserAutenticado />
         <h3>Usuario Autenticado</h3>
         <Route exact path="/" component={Home}/>
-        <Route path="/signup" component={Signup}/>
-        {/* <Route path="/login" component={Login}/> */}
         <Route path="/post/:id" component={Post}/>
         <Route path="/:user/posts" component={MisPosts}/>
+        <Route path="/:user/crear" component={CrearPost}/>
         </div>
       </Router>
     );
@@ -32,9 +32,11 @@ const App = (props) => {
       <Router>
         <div>
         <HeaderUserNoAutenticado />
-        <Route exact path="/" component={Login}/>
+        <h3>Usuario No Autenticado</h3>
+        <Route exact path="/" component={Home}/>
+        <Route path="/signup" component={Signup}/>
         <Route path="/login" component={Login}/>
-        <Route path="/:user/posts" component={MisPosts}/>
+        <Route path="/post/:id" component={Post}/>
         </div>
       </Router>
     );

@@ -8,7 +8,7 @@ const HeaderUserAutenticado = (props) => {
         <nav>
             <Link to="/">Home</Link>
             <Link to={`${props.userData.id}/posts`}>Mis Posts</Link>
-            <Link to="/login" onClick={props.logout}>logout</Link>
+            <Link to="/login" onClick={props.logout}>Logout</Link>
         </nav>
     );
 };
