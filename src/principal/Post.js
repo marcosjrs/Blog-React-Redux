@@ -16,9 +16,9 @@ class Post extends Component {
     render() {
         return (
             <div>
-                <h4>{this.props.dataPost.title}</h4>
+                <h4>{this.props.dataPost?this.props.dataPost.title:""}</h4>
                 <div>
-                {this.props.dataPost.body}
+                {this.props.dataPost?this.props.dataPost.body:""}
                 </div>
             </div>
         );

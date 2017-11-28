@@ -23,10 +23,7 @@ class MisPosts extends Component {
         let listaProps = [];
         if(this.props.userPosts && this.props.userPosts.length){
             listaProps = this.props.userPosts.map((element) => {
-                return (<div key={element.id}>
-                                    <h3>{element.title}</h3>
-                                    <div>{element.body}</div>
-                                </div>);
+            return (<Link key={element.id} to={`/${this.props.userData.id}/post/${element.id}`}><p>{element.title}</p></Link>);
             });
         }
         return listaProps;

@@ -25,8 +25,11 @@ class Home extends Component {
   
   getHtmlAllPosts= ()=>{
     const htmlPosts = this.props.allPosts.map((item,index)=>{
-      const post = <Link to={`/post/${item.id}`} key={"l_"+item.id}><h3>{item.title}</h3></Link>
-      return post;
+      if(this.props.userData && (this.props.userData.id == item.user_id)){//Registrado. Y es su creador
+       return <Link to={`${item.user_id}/post/${item.id}`} key={"l_"+item.id}><h3>{item.title}</h3></Link>
+      }else{
+       return <Link to={`/post/${item.id}`} key={"l_"+item.id}><h3>{item.title}</h3></Link>
+      }     
     }); 
     return htmlPosts;
   }
@@ -44,6 +47,7 @@ class Home extends Component {
 
 const mapStateToProps= (state) => {
   return {
+    userData:state.userData,
     allPosts : state.allPosts,
     paginacion: state.paginacion
   }  

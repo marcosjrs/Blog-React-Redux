@@ -23,6 +23,7 @@ const App = (props) => {
         <Route exact path="/" component={Home}/>
         <Route path="/post/:id" component={Post}/>
         <Route path="/:user/posts" component={MisPosts}/>
+        <Route path="/:user/post/:id" component={Post}/>
         <Route path="/:user/crear" component={CrearPost}/>
         </div>
       </Router>

@@ -87,9 +87,9 @@ const userPosts = (posts = [], accion) =>{
         case USER_POSTS_LOADED:            
             return accion.posts.slice();
         case USER_POSTS_CLEARED:            
-            return null;  
+            return posts;  
         default:
-            return null;
+            return posts;
     }
 }
 
