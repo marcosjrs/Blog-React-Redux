@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { dataPostActual, errorDataPostActual, clearDataPostActual } from '../acciones';
 
@@ -13,6 +14,13 @@ class Post extends Component {
         this.props.clearPost();
     }
     
+    editar(){
+        const idPost = this.props.dataPost?this.props.dataPost.id : "";
+        if(this.props.routerProps && this.props.routerProps.match.params.user && idPost){            
+            return (<Link key='btnEditar' to={`/${this.props.userData.id}/post/${idPost}/editar`}>Editar</Link>);
+        }
+    }
+
     render() {
         return (
             <div>
@@ -20,14 +28,17 @@ class Post extends Component {
                 <div>
                 {this.props.dataPost?this.props.dataPost.body:""}
                 </div>
+                {this.editar()}
             </div>
         );
     }
 }
 
-const mapStateToProps = (state)=>{
+const mapStateToProps = (state,ownProps)=>{
     return({
-        dataPost: state.dataPost
+        userData: state.userData,
+        dataPost: state.dataPost,
+        routerProps: ownProps
     });
 }
 const mapDispatchToProps = (dispatch, ownProps)=>{

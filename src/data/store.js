@@ -3,7 +3,6 @@ import {reducer as formReducer} from 'redux-form';
 import {DATA_LOADED,DATA_CLEARED, USER_CREATED, USER_ERROR, USER_LOGGED, PAGINA_ACTUAL, POST_TOTALES, USER_LOGIN, USER_LOGOUT, DATA_POST_ACTUAL, ERROR_DATA_POST_ACTUAL, CLEAR_DATA_POST_ACTUAL, POST_CREADO, ERROR_CREAR_POST, USER_POSTS_LOADED, USER_POSTS_CLEARED} from "../constantes";
 
 const allPosts = (posts = [], accion) =>{
-    let newPosts = posts.slice();
     switch (accion.type) {
         case DATA_LOADED:            
             return accion.posts.slice();   
@@ -93,8 +92,21 @@ const userPosts = (posts = [], accion) =>{
     }
 }
 
+const dataEditPost = (state= { }, accion)=>{
+    var nuevoState = Object.assign({},state);
+    switch (accion.type) {
+        case DATA_POST_ACTUAL:
+            nuevoState = accion.data;
+            return nuevoState;  
+        case CLEAR_DATA_POST_ACTUAL:
+            return state;           
+        default:
+            return state;
+    }
+}
 
-const reducers = combineReducers({ allPosts, form:formReducer, mensaje , paginacion, userData , dataPost, mensajeCreacionPosts,userPosts });
+
+const reducers = combineReducers({ allPosts, form:formReducer, mensaje , paginacion, userData , dataPost, mensajeCreacionPosts,userPosts, dataEditPost });
 
 const store = createStore(reducers);
 
