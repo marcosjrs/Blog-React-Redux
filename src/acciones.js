@@ -1,4 +1,4 @@
-import {DATA_LOADED, DATA_CLEARED, USER_CREATED, USER_ERROR, USER_LOGOUT, POST_TOTALES, PAGINA_ACTUAL, USER_LOGIN, DATA_POST_ACTUAL, ERROR_DATA_POST_ACTUAL, CLEAR_DATA_POST_ACTUAL} from "./constantes";
+import {DATA_LOADED, DATA_CLEARED, USER_CREATED, USER_ERROR, USER_LOGOUT, POST_TOTALES, PAGINA_ACTUAL, USER_LOGIN, DATA_POST_ACTUAL, ERROR_DATA_POST_ACTUAL, CLEAR_DATA_POST_ACTUAL, POST_CREADO, ERROR_CREAR_POST} from "./constantes";
 
 export const dataLoaded = (posts) => { 
     return {type:DATA_LOADED, posts };
@@ -41,4 +41,12 @@ export const clearDataPostActual = ()=>{
 }
 export const errorDataPostActual = ()=>{
     return {type: ERROR_DATA_POST_ACTUAL};
+}
+
+export const postCreado= (mensaje)=>{
+    return {type: POST_CREADO,mensaje};
+}
+
+export const errorCrearPost= (mensaje)=>{
+    return {type: ERROR_CREAR_POST,mensaje};
 }
