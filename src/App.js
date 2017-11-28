@@ -7,6 +7,7 @@ import Signup from './principal/Signup';
 import Post from './principal/Post';
 import MisPosts from './principal/MisPosts';
 import CrearPost from './principal/CrearPost';
+import EditarPost from './principal/EditarPost';
 import HeaderUserAutenticado from './cabeceras/HeaderUserAutenticado';
 import HeaderUserNoAutenticado from './cabeceras/HeaderUserNoAutenticado';
 import { connect } from 'react-redux';
@@ -23,7 +24,8 @@ const App = (props) => {
         <Route exact path="/" component={Home}/>
         <Route path="/post/:id" component={Post}/>
         <Route path="/:user/posts" component={MisPosts}/>
-        <Route path="/:user/post/:id" component={Post}/>
+        <Route exact path="/:user/post/:id" component={Post}/>
+        <Route path="/:user/post/:id/editar" component={EditarPost}/>
         <Route path="/:user/crear" component={CrearPost}/>
         </div>
       </Router>
