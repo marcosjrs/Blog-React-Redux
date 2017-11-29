@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { dataPostActual, errorDataPostActual, clearDataPostActual } from '../acciones';
+import { dataPostActual, errorDataPostActual, clearDataPostActual, errorBorrarPost, postBorrado } from '../acciones';
 
 class Post extends Component {
     
@@ -14,10 +14,23 @@ class Post extends Component {
         this.props.clearPost();
     }
     
-    editar(){
+    btnEditar(){
         const idPost = this.props.dataPost?this.props.dataPost.id : "";
         if(this.props.routerProps && this.props.routerProps.match.params.user && idPost){            
             return (<Link key='btnEditar' to={`/${this.props.userData.id}/post/${idPost}/editar`}>Editar</Link>);
+        }
+    }
+
+    btnBorrar(){
+        const idPost = this.props.dataPost?this.props.dataPost.id : "";
+        if(this.props.routerProps && this.props.routerProps.match.params.user && idPost){ 
+            return (<button key='btnBorrar' onClick={()=>{ this.props.eliminarPost(idPost,this.props.userData)}}>Borrar</button> );
+        }
+    }
+
+    msgEliminacion(){
+        if(this.props.mensajeEliminacionPost){
+            return <div key='msgEliminacion'>{this.props.mensajeEliminacionPost}</div>
         }
     }
 
@@ -28,7 +41,8 @@ class Post extends Component {
                 <div>
                 {this.props.dataPost?this.props.dataPost.body:""}
                 </div>
-                {this.editar()}
+                {this.msgEliminacion()}
+                {this.btnEditar()} {this.btnBorrar()}
             </div>
         );
     }
@@ -38,7 +52,8 @@ const mapStateToProps = (state,ownProps)=>{
     return({
         userData: state.userData,
         dataPost: state.dataPost,
-        routerProps: ownProps
+        routerProps: ownProps,
+        mensajeEliminacionPost: state.mensajeEliminacionPost
     });
 }
 const mapDispatchToProps = (dispatch, ownProps)=>{
@@ -54,6 +69,19 @@ const mapDispatchToProps = (dispatch, ownProps)=>{
         },
         clearPost :()=>{
             dispatch(clearDataPostActual());
+        },
+        eliminarPost: (idPost,userData)=>{
+            axios.delete(`https://blog-api-u.herokuapp.com/v1/posts/${idPost}`,
+            { headers: {'Authorization':'Bearer'+userData.jwt} })
+            .then((resp)=>{
+                dispatch(postBorrado("Post Borrado Correctamente"));
+                setTimeout(()=>{
+                    ownProps.history.push(`/${userData.id}/posts`);
+                },2000)
+            })
+            .catch((data)=>{
+                dispatch(errorBorrarPost("Error al intentar borrar el post"));
+            });
         }
     });
 }

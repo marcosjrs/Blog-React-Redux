@@ -1,4 +1,4 @@
-import {DATA_LOADED, DATA_CLEARED, USER_CREATED, USER_ERROR, USER_LOGOUT, POST_TOTALES, PAGINA_ACTUAL, USER_LOGIN, DATA_POST_ACTUAL, ERROR_DATA_POST_ACTUAL, CLEAR_DATA_POST_ACTUAL, POST_CREADO, ERROR_CREAR_POST, USER_POSTS_LOADED, USER_POSTS_CLEARED, USER_EDIT_POST_CLEARED, POST_EDITADO, ERROR_EDITAR_POST} from "./constantes";
+import {DATA_LOADED, DATA_CLEARED, USER_CREATED, USER_ERROR, USER_LOGOUT, POST_TOTALES, PAGINA_ACTUAL, USER_LOGIN, DATA_POST_ACTUAL, ERROR_DATA_POST_ACTUAL, CLEAR_DATA_POST_ACTUAL, POST_CREADO, ERROR_CREAR_POST, USER_POSTS_LOADED, USER_POSTS_CLEARED, USER_EDIT_POST_CLEARED, POST_EDITADO, ERROR_EDITAR_POST, POST_BORRADO, ERROR_BORRAR_POST} from "./constantes";
 
 export const dataLoaded = (posts) => { 
     return {type:DATA_LOADED, posts };
@@ -68,4 +68,12 @@ export const postEditado = (mensaje="") => {
 
 export const errorEditarPost = (mensaje="") => { 
     return {type:ERROR_EDITAR_POST, mensaje };
+};
+
+export const postBorrado = (mensaje="") => { 
+    return {type:POST_BORRADO, mensaje };
+};
+
+export const errorBorrarPost = (mensaje="") => { 
+    return {type:ERROR_BORRAR_POST, mensaje };
 };
