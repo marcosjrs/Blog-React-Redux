@@ -25,7 +25,7 @@ class Home extends Component {
   
   getHtmlAllPosts= ()=>{
     const htmlPosts = this.props.allPosts.map((item,index)=>{
-      if(this.props.userData && (this.props.userData.id == item.user_id)){//Registrado. Y es su creador
+      if(this.props.userData && (this.props.userData.id === item.user_id)){//Registrado. Y es su creador
        return <li className="list-group-item" key={"li_"+item.id}> <Link to={`/${item.user_id}/post/${item.id}`} key={"l_"+item.id}><h4>{item.title}</h4></Link> </li>
       }else{
        return <li className="list-group-item" key={"li_"+item.id}> <Link to={`/post/${item.id}`} key={"l_"+item.id}><h4>{item.title}</h4></Link> </li>

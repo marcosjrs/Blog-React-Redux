@@ -33,7 +33,7 @@ const renderField = ({
 )
 
 const SyncValidationLoginForm = props => {
-  const { handleSubmit, pristine, reset, submitting,msgBackEnd } = props
+  const { handleSubmit, submitting,msgBackEnd } = props
   return (
     <form onSubmit={handleSubmit}>
       <Field name="email" type="email" component={renderField} label="Email" />
