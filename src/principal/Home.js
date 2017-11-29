@@ -19,7 +19,7 @@ class Home extends Component {
   }
   componentWillReceiveProps(nextProps) {
     if(nextProps.paginacion.paginaActual !== this.props.paginacion.paginaActual){
-      this.props.getPosts(this.props.paginacion.paginaActual);
+      this.props.getPosts(nextProps.paginacion.paginaActual);
     }
   }
   
