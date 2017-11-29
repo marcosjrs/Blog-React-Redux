@@ -5,10 +5,12 @@ import { connect } from 'react-redux';
 
 const HeaderUserAutenticado = (props) => {
     return (
-        <nav>
-            <Link to="/">Home</Link>
-            <Link to={`${props.userData.id}/posts`}>Mis Posts</Link>
-            <Link to="/login" onClick={props.logout}>Logout</Link>
+      <nav className="navbar navbar-default">
+          <ul className="nav navbar-nav">
+            <li><Link to="/">Inicio</Link></li>
+            <li><Link to={`${props.userData.id}/posts`}>Mis Posts</Link></li>
+            <li><Link to="/login" onClick={props.logout}>Deslogarse</Link></li>
+          </ul>
         </nav>
     );
 };

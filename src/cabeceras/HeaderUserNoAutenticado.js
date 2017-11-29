@@ -3,10 +3,12 @@ import {Link} from 'react-router-dom';
 
 const HeaderUserNoAutenticado = () => {
     return (
-        <nav>
-            <Link to="/">Home</Link>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Sign up</Link>
+        <nav className="navbar navbar-default">
+            <ul className="nav navbar-nav">
+                <li><Link to="/">Inicio</Link></li>
+                <li><Link to="/login">Iniciar Sesión</Link></li>
+                <li><Link to="/signup">Registrarse</Link></li>
+            </ul>
         </nav>
     );
 };

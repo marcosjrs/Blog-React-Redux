@@ -19,20 +19,20 @@ class MisPosts extends Component {
         const idUser = this.props.userData?this.props.userData.id:"";
         return idUser;
     }
-    getUserPosts= ()=>{
+    getUserPosts = () => {
         let listaProps = [];
         if(this.props.userPosts && this.props.userPosts.length){
             listaProps = this.props.userPosts.map((element) => {
-            return (<Link key={element.id} to={`/${this.props.userData.id}/post/${element.id}`}><p>{element.title}</p></Link>);
+            return (<li className="list-group-item" key={"li_"+element.id}> <Link key={element.id}  to={`/${this.props.userData.id}/post/${element.id}`}><p>{element.title}</p></Link> </li>);
             });
         }
-        return listaProps;
+        return <ul className="list-group mis-posts">{listaProps}</ul>;
     }
     render() {
         this.getUserPosts();
         return (
             <div>
-                <Link to={`/${this.getIdUser()}/crear`}>Crear Posts</Link>
+                <Link  className="btn btn-sm btn-primary"  to={`/${this.getIdUser()}/crear`}>Crear Posts</Link>
                 {this.getUserPosts()}
             </div>
         );

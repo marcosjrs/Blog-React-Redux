@@ -26,18 +26,19 @@ class Home extends Component {
   getHtmlAllPosts= ()=>{
     const htmlPosts = this.props.allPosts.map((item,index)=>{
       if(this.props.userData && (this.props.userData.id == item.user_id)){//Registrado. Y es su creador
-       return <Link to={`${item.user_id}/post/${item.id}`} key={"l_"+item.id}><h3>{item.title}</h3></Link>
+       return <li className="list-group-item" key={"li_"+item.id}> <Link to={`${item.user_id}/post/${item.id}`} key={"l_"+item.id}><h4>{item.title}</h4></Link> </li>
       }else{
-       return <Link to={`/post/${item.id}`} key={"l_"+item.id}><h3>{item.title}</h3></Link>
+       return <li className="list-group-item" key={"li_"+item.id}> <Link to={`/post/${item.id}`} key={"l_"+item.id}><h4>{item.title}</h4></Link> </li>
       }     
-    }); 
-    return htmlPosts;
+    });     
+    return <ul className="list-group mis-posts">{htmlPosts}</ul>;
   }
   
   render() {
     
     return (
-      <div>
+      <div className="home">
+        <h3>POST GENERALES</h3>
         {this.getHtmlAllPosts()}
         <Paginacion />
       </div>

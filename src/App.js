@@ -18,15 +18,16 @@ const App = (props) => {
   if(autenticado){
     return (
       <Router>
-        <div>
-        <HeaderUserAutenticado />
-        <h3>Usuario Autenticado</h3>
-        <Route exact path="/" component={Home}/>
-        <Route path="/post/:id" component={Post}/>
-        <Route path="/:user/posts" component={MisPosts}/>
-        <Route exact path="/:user/post/:id" component={Post}/>
-        <Route path="/:user/post/:id/editar" component={EditarPost}/>
-        <Route path="/:user/crear" component={CrearPost}/>
+        <div >
+          <HeaderUserAutenticado />
+          <div className="container">
+            <Route exact path="/" component={Home}/>
+            <Route path="/post/:id" component={Post}/>
+            <Route path="/:user/posts" component={MisPosts}/>
+            <Route exact path="/:user/post/:id" component={Post}/>
+            <Route path="/:user/post/:id/editar" component={EditarPost}/>
+            <Route path="/:user/crear" component={CrearPost}/>
+          </div>
         </div>
       </Router>
     );
@@ -35,11 +36,12 @@ const App = (props) => {
       <Router>
         <div>
         <HeaderUserNoAutenticado />
-        <h3>Usuario No Autenticado</h3>
-        <Route exact path="/" component={Home}/>
-        <Route path="/signup" component={Signup}/>
-        <Route path="/login" component={Login}/>
-        <Route path="/post/:id" component={Post}/>
+          <div className="container">
+            <Route exact path="/" component={Home}/>
+            <Route path="/signup" component={Signup}/>
+            <Route path="/login" component={Login}/>
+            <Route path="/post/:id" component={Post}/>
+          </div>
         </div>
       </Router>
     );

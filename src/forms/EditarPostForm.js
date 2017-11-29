@@ -85,10 +85,7 @@ let EditarPostForm = props => {
 
       <div>
         <button type="submit" disabled={submitting}>
-          Submit
-        </button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>
-          Clear Values
+          EDITAR
         </button>
       </div>
     </form>

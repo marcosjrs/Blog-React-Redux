@@ -84,10 +84,7 @@ const CrearPostForm = props => {
 
       <div>
         <button type="submit" disabled={submitting}>
-          Submit
-        </button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>
-          Clear Values
+          CREAR
         </button>
       </div>
     </form>

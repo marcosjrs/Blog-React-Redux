@@ -16,6 +16,35 @@ div.container-msg>span {
   font-weight: 700;
   font-size: 16px;
 }
+
+.home h3{
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+.home .list-group li , .mis-posts li{
+  margin-left: 0px;
+}
+
+.mis-posts{
+  margin-top: 15px;
+}
+
+.cuerpo-post{
+  margin-bottom: 25px;
+}
+
+form>div button[type=submit] {
+  white-space: nowrap;
+  display: inline-block;
+  border-radius: 5px;
+  padding: 5px 12px;
+  font-size: 14px;
+  color: #fff;
+  background-image: linear-gradient(#4f93ce,#285f8f);
+  border: 1px solid #285f8f;
+}
+
 .pagination {
   display: inline-block!important;
   padding-left: 0;
@@ -69,4 +98,6 @@ div.container-msg>span {
 .pagination li a{
   cursor: pointer;
 }
+
+
 

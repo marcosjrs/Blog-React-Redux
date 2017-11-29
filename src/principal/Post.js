@@ -17,14 +17,14 @@ class Post extends Component {
     btnEditar(){
         const idPost = this.props.dataPost?this.props.dataPost.id : "";
         if(this.props.routerProps && this.props.routerProps.match.params.user && idPost){            
-            return (<Link key='btnEditar' to={`/${this.props.userData.id}/post/${idPost}/editar`}>Editar</Link>);
+            return (<Link key='btnEditar' className="btn btn-sm btn-primary" to={`/${this.props.userData.id}/post/${idPost}/editar`}>Editar</Link>);
         }
     }
 
     btnBorrar(){
         const idPost = this.props.dataPost?this.props.dataPost.id : "";
         if(this.props.routerProps && this.props.routerProps.match.params.user && idPost){ 
-            return (<button key='btnBorrar' onClick={()=>{ this.props.eliminarPost(idPost,this.props.userData)}}>Borrar</button> );
+            return (<button key='btnBorrar' className="btn btn-sm btn-danger" onClick={()=>{ this.props.eliminarPost(idPost,this.props.userData)}}>Borrar</button> );
         }
     }
 
@@ -38,7 +38,7 @@ class Post extends Component {
         return (
             <div>
                 <h4>{this.props.dataPost?this.props.dataPost.title:""}</h4>
-                <div>
+                <div className="cuerpo-post">
                 {this.props.dataPost?this.props.dataPost.body:""}
                 </div>
                 {this.msgEliminacion()}
